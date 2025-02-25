@@ -53,9 +53,9 @@
             </li>
           </ul>
 
-          <form class="d-flex" role="search">
-            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
+          <form class="d-flex" role="search" action="/search">
+            <input class="form-control me-2" type="search" placeholder="Search" name="search" aria-label="Search">
+            <button class="btn btn-outline-dark border-white" type="submit">Search</button>
           </form>
         </div>
       
@@ -68,15 +68,16 @@
           <li><a href="{% url 'profile' %}" class="dropdown-item">Profile</a></li>
           <li><a href="#" class="dropdown-item">Orders</a></li>
           <li><a href="{% url 'passwordchange' %}" class="dropdown-item">Change Password</a></li>
-          <li><a href="{% url 'logout' %}" class="dropdown-item">Logout</a></li>
+          <li><form action="{% url 'logout' %}" method="post" style="display: inline;"> {% csrf_token %} <button type="submit" class="dropdown-item">Logout</button> </form></li>
+          
         </ul>
         </li>
         <li class="nav-item mx-2">
-          <a href="{% url 'showcart' %}" class="nav-link text-white">Cart 4</a>
+          <a href="{% url 'showcart' %}" class="nav-link text-white"> <span class="badge bg-danger">{% if totalitem > 0 %} {{totalitem}} {%endif%} </span>  Cart </a>
         </li>
         
           <li class="nav-item mx-2">
-            <a href="#" class="nav-link text-white">Wishlist 4</a>
+            <a href="{% url 'showwishlist' %}" class="nav-link text-white"> <span class="badge bg-danger">{% if wishitem > 0 %} {{wishitem}} {%endif%} </span> <i class="fa fa-heart"></i> </a>
           </li>
           {% else %}
           <li class="nav-item mx-2">
