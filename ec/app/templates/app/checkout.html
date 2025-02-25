@@ -54,8 +54,7 @@
                 <div class="text-end">
                     <!-- <button type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Continue</button> -->
                     <!-- <div id="paypal-button-container"></div>-->
-                     <button id="rzp-button1" type="submit"
-                        class="btn btn-warning mt-3 px-5 fw-bold">Payment</button> 
+                     <button id="rzp-button1" type="submit" class="btn btn-warning mt-3 px-5 fw-bold">Payment</button> 
                 </div>
             </form>
         </div>
@@ -86,7 +85,7 @@
             "color": "#3399cc"
             }
     };
-    var rzp1 = new Razorpay (options);
+    var rzp1 = new Razorpay(options);
     rzp1.on('payment.failed', function (response) {
             alert(response.error.description);
     });
